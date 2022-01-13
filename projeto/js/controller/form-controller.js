@@ -1,6 +1,10 @@
 /* Responsável por controlar o formulario */
+import Address from "../models/address.js";
+
+const state = new State();
 
 function State(){
+    this.address = new Address();
     this.btnSave = null;
     this.btnClear = null;
     this.inputCep = null;
@@ -10,8 +14,6 @@ function State(){
     this.errorCep = null;
     this.errorNumber = null;
 }
-
-const state = new State();
 
 export function init(){
     state.inputCep = document.forms.newAddress.cep;
@@ -25,5 +27,19 @@ export function init(){
     state.errorCep = document.querySelector('[data-error="cep"]');
     state.errorNumber = document.querySelector('[data-error="number"]');
 
-    console.log(state)
+    state.inputNumber.addEventListener('change', handleInputNumberChange);
+}
+
+function handleInputNumberChange(event){
+    if(event.target.value == ""){
+        setFormError("number", "Campo requerido")
+    } else {
+        setFormError("number", "")
+    }
+}
+
+// função para escrever a mensagem de campo requerido no formulario
+function setFormError(key, value){
+    const element = document.querySelector(`[data-error="${key}"]`);
+    element.innerHTML = value;
 }
