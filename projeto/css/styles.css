@@ -9,6 +9,7 @@ html, body {
     background-color: #000;
 }
 
+/* --- barra de navegação --- */
 .nav-container{
     height: 80px;
     background-color: #ff8400;
@@ -37,6 +38,7 @@ html, body {
     cursor: pointer; /* pra aparecer a maozinha no cursos*/
 }
 
+/*--- formulario ---*/
 .form-container {
     padding: 40px 20px;
 }
@@ -50,9 +52,6 @@ html, body {
     padding: 20px;
 }
 
-.form-container {
-    
-}
 
 .form-control {
     margin: 20px;
@@ -83,3 +82,67 @@ html, body {
     margin-top: 5px;
     color: #faa;
 }
+
+/* ---botoes do formulario ---*/
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    width: 250px;
+    height: 50px;
+    background-color: #ff8400;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-left{
+    margin-right: 10px;
+}
+
+.btn-right{
+    margin-left: 10px;
+}
+
+/* --- card --- */
+
+.list-container {
+    width: 100%;
+    height: 0 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+
+}
+
+.card-list-item{
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card-list-item h3 {
+    color: #ff8400;
+    font-size: 18px;
+}
+
+.address-line {
+    color: #fff;
+    font-size: 14px;
+}
+
+.address-cep{
+    color: #8f8f8f;
+    font-size: 12px;
+}
+
