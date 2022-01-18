@@ -10,5 +10,4 @@ export async function getJson(url){
     catch(e){
         throw new RequestException("Erro ao realizar a requisição");
     }
-
 }

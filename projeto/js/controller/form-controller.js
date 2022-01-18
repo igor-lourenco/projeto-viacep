@@ -1,6 +1,7 @@
 /* Responsável por controlar o formulario */
 import Address from "../models/address.js";
 import * as addressService from "../services/address-service.js";
+import * as listController from './list-controller.js';
 
 const state = new State();
 
@@ -39,6 +40,7 @@ export function init(){
 
 }
 
+//função para pegar o numero digitado no input
 function handleInputNumberKeyup(event){
     state.address.number = event.target.value;
 }
@@ -58,9 +60,10 @@ async function handleInputCepChange(event){
     }
 }
 
+//funcao para salvar os dados
 async function handlerBtnSaveClick(event){
     event.preventDefault();
-    console.log(state.address);
+    listController.addCard(state.address);
 
 }
 
@@ -74,7 +77,6 @@ function handleInputNumberChange(event){
         setFormError("number", "")
     }
 }
-
 
 //função para disparar um evento quando o botao limpar for clicado
 function handlerBtnClearClick(event){
