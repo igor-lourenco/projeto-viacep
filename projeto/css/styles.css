@@ -1,3 +1,6 @@
+@import 'modal.css';
+@import 'buttons.css';
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -81,31 +84,6 @@ html, body {
 .error-message {
     margin-top: 5px;
     color: #faa;
-}
-
-/* ---botoes do formulario ---*/
-.btn-container{
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn{
-    width: 250px;
-    height: 50px;
-    background-color: #ff8400;
-    border: 0;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.btn-left{
-    margin-right: 10px;
-}
-
-.btn-right{
-    margin-left: 10px;
 }
 
 /* --- card --- */
