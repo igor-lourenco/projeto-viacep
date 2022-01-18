@@ -1,5 +1,6 @@
 /* Responsável por controlar o formulario */
 import Address from "../models/address.js";
+import * as addressService from "../services/address-service.js";
 
 const state = new State();
 
@@ -32,6 +33,28 @@ export function init(){
 
     //serve pra limpar o formulário quando o botão clear for clicado 
     state.btnClear.addEventListener('click', handlerBtnClearClick);
+    state.btnSave.addEventListener('click', handlerBtnSaveClick);
+    state.inputCep.addEventListener('change', handleInputCepChange);
+}
+
+async function handleInputCepChange(event){
+    try{
+    const cep = event.target.value;
+    const address = await addressService.findByCep(cep);
+    state.inputCity.value = address.city;
+    state.inputStreet.value = address.street;
+    state.address = address;
+    setFormError("cep", "");
+    state.inputNumber.focus();
+    }catch(e){
+        setFormError("cep", "informe um cep válido");
+    }
+}
+
+async function handlerBtnSaveClick(event){
+    event.preventDefault();
+    console.log(event.target);
+
 }
 
 //função para disparar um evento quando o valor do inputNumber foi modificado 
@@ -39,6 +62,8 @@ function handleInputNumberChange(event){
     if(event.target.value == ""){
         setFormError("number", "Campo requerido")
     } else {
+        state.inputStreet.value = "";
+        state.inputCity.value = "";
         setFormError("number", "")
     }
 }
