@@ -35,17 +35,24 @@ export function init(){
     state.btnClear.addEventListener('click', handlerBtnClearClick);
     state.btnSave.addEventListener('click', handlerBtnSaveClick);
     state.inputCep.addEventListener('change', handleInputCepChange);
+    state.inputNumber.addEventListener('keyup', handleInputNumberKeyup);
+
 }
 
+function handleInputNumberKeyup(event){
+    state.address.number = event.target.value;
+}
+
+//funcao para chamar o metodo passando o cep e retornando o address e preenchendo os inputs
 async function handleInputCepChange(event){
     try{
-    const cep = event.target.value;
-    const address = await addressService.findByCep(cep);
-    state.inputCity.value = address.city;
-    state.inputStreet.value = address.street;
-    state.address = address;
-    setFormError("cep", "");
-    state.inputNumber.focus();
+        const cep = event.target.value;
+        const address = await addressService.findByCep(cep);
+        state.inputCity.value = address.city;
+        state.inputStreet.value = address.street;
+        state.address = address;
+        setFormError("cep", "");
+        state.inputNumber.focus();
     }catch(e){
         setFormError("cep", "informe um cep válido");
     }
@@ -53,7 +60,7 @@ async function handleInputCepChange(event){
 
 async function handlerBtnSaveClick(event){
     event.preventDefault();
-    console.log(event.target);
+    console.log(state.address);
 
 }
 
